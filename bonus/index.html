@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>LOGIN TODOLIST</title>
+    <link href="index.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="login">
+        <form>
+            <h1>LOG IN</h1>
+            <h2>       </h2>
+            <label>EMAIL</label>
+            <input type= "text" class="email">
+            <label>PASSWORD</label>
+            <input type= "password" class="password">
+            <button type= "button" class="button">Submit</button>
+            <input type="button" onclick="window.location.href = 'todolist.html';" value="SUBMIT" />
+        </form>
+    </div>
+    <script>
+        var myEmail=document.querySelector(".email");
+        var myPass=document.querySelector(".password");
+        var button=document.querySelector(".button");
+        button.addEventListener("click",()=>{
+            var obj={
+                email:myEmail.value,
+                password:myPass.value
+            };
+            fetch("http://localhost:3000/login",{
+                method:"POST",
+                headers:{
+                    "Content-type":"applications/json"
+                },
+                body:JSON.stringify(obj)
+            });
+        });
+    </script>
+</body>
+</html>
